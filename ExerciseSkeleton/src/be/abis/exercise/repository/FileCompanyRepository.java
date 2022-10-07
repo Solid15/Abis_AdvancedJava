@@ -12,12 +12,15 @@ import java.util.List;
 import be.abis.exercise.model.Company;
 
 public class FileCompanyRepository implements CompanyRepository {
+
+//	private static FileCompanyRepository fileCompanyRepository;
 	
 	private ArrayList<Company> companies = new ArrayList<Company>();
 
 	public FileCompanyRepository(){
 		try {
-			List<String> compStrings = Files.readAllLines(Paths.get("c:\\temp\\javacourses\\companies.txt"));
+	//		List<String> compStrings = Files.readAllLines(Paths.get("c:\\temp\\javacourses\\companies.txt"));
+			List<String> compStrings = Files.readAllLines(Paths.get("c:/temp/javacourses/companies.txt"));
 			for(String s:compStrings){
 				companies.add(new Company(s.trim()));
 			}

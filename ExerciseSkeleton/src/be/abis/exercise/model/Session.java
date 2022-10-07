@@ -2,8 +2,11 @@ package be.abis.exercise.model;
 
 import be.abis.exercise.exception.InvoiceException;
 
+import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public abstract class Session implements Service {
 	private Course course;
@@ -59,6 +62,18 @@ public abstract class Session implements Service {
 		return "The session about " + this.getCourse().getTitle()
 				+ " will be given at " + this.getLocation().getName()
 				+ " by " + this.getInstructor().toString() + " on " + fmt.format(this.getDate()) + ".";
+	//	return this.toString(Locale.getDefault());
+	}
+
+	public String toString(Locale locale) {
+
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+		String baseName = "be.abis.exercise.resources.applicationResources";
+		ResourceBundle bundle = ResourceBundle.getBundle(baseName,locale);
+
+		return MessageFormat.format(bundle.getString("message"),
+				this.getCourse().getTitle(), this.getLocation().getName(),
+				this.getInstructor().toString(), fmt.format(this.getDate()));
 	}
 
 	public abstract double invoice() throws InvoiceException;

@@ -1,11 +1,11 @@
 package be.abis.exercise.test;
 
-import java.util.List;
-
 import be.abis.exercise.model.Company;
-import be.abis.exercise.repository.FileCompanyRepository;
 import be.abis.exercise.repository.CompanyRepository;
+import be.abis.exercise.repository.FileCompanyRepository;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

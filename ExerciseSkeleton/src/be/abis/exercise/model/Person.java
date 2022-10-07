@@ -116,6 +116,17 @@ public class Person implements Instructor, CourseParticipant, Comparable<CourseP
 	public void attendCourse(Course course) {
 		System.out.println(this + " follows " + course.getTitle());
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		return (this.firstName.equals(((Person)o).firstName) && (this.lastName.equals(((Person)o).lastName)));
+	}			// TODO check with the toString() method
+
+	@Override
+	public int hashCode() {
+		return toString().length();
+	}
 	
 	@Override
 	public int compareTo(CourseParticipant o) {

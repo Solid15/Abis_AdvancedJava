@@ -1,6 +1,7 @@
 package be.abis.exercise.model;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Comparator;
 
 public class Person implements Instructor, CourseParticipant, Comparable<CourseParticipant> {
@@ -126,6 +127,10 @@ public class Person implements Instructor, CourseParticipant, Comparable<CourseP
 	@Override
 	public int hashCode() {
 		return toString().length();
+	}
+
+	public int calculateAge() {
+		return Period.between(birthDate, LocalDate.now()).getYears();
 	}
 	
 	@Override

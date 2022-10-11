@@ -1,5 +1,6 @@
 package be.abis.exercise.repository;
 
+import be.abis.exercise.exception.PersonNotFoundException;
 import be.abis.exercise.exception.ZipCodeNotCorrectException;
 import be.abis.exercise.model.Address;
 import be.abis.exercise.model.Company;
@@ -48,14 +49,21 @@ public class FilePersonRepositoryBySandy implements PersonRepository {
     @Override
     public void writeAllPersonsToFile() throws IOException {
         PrintWriter pw = new PrintWriter(new FileWriter(FILELOCATION));
-
         for (Person pe : allPersons) {
             StringBuilder sb = this.convertPersonToString(pe);
             pw.println(sb);
         }
-
         pw.close();
+    }
 
+    @Override
+    public Person findPersonById(int id) throws PersonNotFoundException {
+        return null;
+    }
+
+    @Override
+    public Person findPerson(String email, String password) throws PersonNotFoundException {
+        return null;
     }
 
     private StringBuilder convertPersonToString(Person p) {
@@ -77,7 +85,7 @@ public class FilePersonRepositoryBySandy implements PersonRepository {
         return sb;
     }
 
-
+    @Override
     public List<Person> getAllPersons() {
         return allPersons;
     }
@@ -89,10 +97,6 @@ public class FilePersonRepositoryBySandy implements PersonRepository {
         return FILELOCATION;
     }
 
-    @Override
-    public List<Person> getPersons() {
-        return null;
-    }
 
     @Override
     public void printPersonsSortedToFile(String file) {

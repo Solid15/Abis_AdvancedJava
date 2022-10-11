@@ -19,7 +19,7 @@ public class TestSession {
             LocalDate.of(2022, 12, 4), PublicSession.ABIS, sandy);
 
     public void addParticipants() {
-        session.addEnrolment((CourseParticipant) FilePersonRepository.getInstance().getPersons());
+        session.addEnrolment((CourseParticipant) FilePersonRepository.getInstance().getAllPersons());
     }
 
     public static void main(String... args) {

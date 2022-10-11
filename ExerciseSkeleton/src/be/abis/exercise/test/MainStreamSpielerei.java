@@ -84,9 +84,9 @@ public class MainStreamSpielerei {
                  BigDecimal.valueOf(people.stream().filter(person -> person.getBirthDate() != null)
                 .mapToInt(Person::calculateAge)
                 .average()
-        //      .orElse()
+        //      .orElse(0.0)
         //      .orElseThrow()
-         //     .isPresent()            // boolean
+        //      .isPresent()            // boolean
                 .getAsDouble());
         System.out.println("The average age is: " + averageAge.setScale(0, RoundingMode.HALF_UP) + ".");
 

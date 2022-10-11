@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class DateMainPlaying {
+public class DateAndLoggingMainPlaying {
 
     public static void main(String... args) {
 
@@ -56,6 +56,7 @@ public class DateMainPlaying {
         System.out.println(session.toString(new Locale("nl")));
         System.out.println(session.toString(new Locale("fr")));
 
-
+        System.out.println(Period.between(myBirthDay, today).getYears());
+  //      System.out.println(Period.between(myBirthDay, today).getDays());
     }
 }

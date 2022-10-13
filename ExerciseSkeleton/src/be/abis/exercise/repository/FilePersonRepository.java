@@ -54,7 +54,7 @@ public class FilePersonRepository implements PersonRepository {
             List<String> personLines = Files.readAllLines(Paths.get(FILELOCATION));
             people = new ArrayList<>();    // TODO  is this necessary?
             for (String person : personLines){
-                String[] personData = person.split(";");
+                String[] personData = person.split(";");        // Tokenizer is deprecated
                 if (!personData[5].equalsIgnoreCase("null") && !personData[2].equalsIgnoreCase("null")) {
                     people.add(new Person(personData[0], personData[1],
                             LocalDate.parse(personData[2], DateTimeFormatter.ofPattern("MM/dd/yyyy")),

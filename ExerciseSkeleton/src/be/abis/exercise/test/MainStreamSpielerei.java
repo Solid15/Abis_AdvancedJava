@@ -1,6 +1,7 @@
 package be.abis.exercise.test;
 
 import be.abis.exercise.exception.PersonNotFoundException;
+import be.abis.exercise.model.Company;
 import be.abis.exercise.model.Person;
 import be.abis.exercise.repository.FilePersonRepository;
 import org.apache.logging.log4j.LogManager;
@@ -94,10 +95,28 @@ public class MainStreamSpielerei {
         people.removeIf(person -> person.getCompany() == null);             // remove works on List, not Stream
         System.out.println("Number of people in List: " + people.size());
  //       people.forEach(System.out::println);
-
-
                                             // TODO convertStringToPerson()
                                             // TODO convertPersonToString()
+        // Stream exercises repeat
+        System.out.println();
+        people.stream().filter(person -> person.getCompany() != null).forEach(System.out::println);
+        people.stream().filter(person -> person.getFirstName().startsWith("S")).sorted()
+                .forEach(person -> System.out.println(person.getFirstName() + " " + person.getLastName().toUpperCase()));
+        people.stream().map(Person::getCompany).filter(Objects::nonNull).distinct().forEach(System.out::println);
+        System.out.println(people.stream()
+                .filter(person -> person.getCompany().getAddress().getTown().equalsIgnoreCase("Leuven")).count());
+        System.out.println(people.stream().max(Comparator.comparing(Person::getBirthDate)).get());
+
+        Map<Company, List<Person>> personsByCompany = people.stream().filter(person -> person.getCompany() != null)
+                .collect(Collectors.groupingBy(Person::getCompany));
+        System.out.println(personsByCompany);
+        Map<String, List<Person>> peopleByCompany = people.stream().filter(person -> person.getCompany() != null)
+                .collect(Collectors.groupingBy(person -> person.getCompany().getName()));
+        System.out.println(peopleByCompany);
+
+        Map<String, Long> numbersByCompany = people.stream().filter(person -> person.getCompany() != null)
+                .collect(Collectors.groupingBy(person ->  person.getCompany().getName(), Collectors.counting()));
+        System.out.println(numbersByCompany);
 
 
 

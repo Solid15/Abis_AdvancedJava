@@ -1,5 +1,9 @@
-package be.abis.exercise.model;
+package be.abis.exercise.test;
 
+import be.abis.exercise.model.Company;
+import be.abis.exercise.model.Course;
+import be.abis.exercise.model.Person;
+import be.abis.exercise.model.PublicSession;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
